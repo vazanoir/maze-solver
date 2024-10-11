@@ -52,3 +52,15 @@ class Cell():
         if self.has_left_wall:
             line = Line(Point(x1, y1), Point(x1, y2))
             self.__win.draw_line(line)
+
+    def draw_move(self, to_cell, undo=False):
+        line = Line(
+            Point((self.__x1 + self.__x2) / 2, (self.__y1 + self.__y2) / 2),
+            Point((to_cell.__x1 + to_cell.__x2) / 2, (to_cell.__y1 + to_cell.__y2) / 2)
+        )
+
+        color = "red"
+        if undo:
+            color = "gray"
+
+        self.__win.draw_line(line, color)
