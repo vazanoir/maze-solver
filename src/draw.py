@@ -40,18 +40,36 @@ class Cell():
         self.__y1 = y1
         self.__x2 = x2
         self.__y2 = y2
+
+        self.__draw_top_wall(x1, y1, x2, y2, "white")
+        self.__draw_right_wall(x1, y1, x2, y2, "white")
+        self.__draw_bottom_border(x1, y1, x2, y2, "white")
+        self.__draw_left_border(x1, y1, x2, y2, "white")
+
         if self.has_top_wall:
-            line = Line(Point(x1, y1), Point(x2, y1))
-            self.__win.draw_line(line)
+            self.__draw_top_wall(x1, y1, x2, y2)
         if self.has_right_wall:
-            line = Line(Point(x2, y1), Point(x2, y2))
-            self.__win.draw_line(line)
+            self.__draw_right_wall(x1, y1, x2, y2)
         if self.has_bottom_wall:
-            line = Line(Point(x1, y2), Point(x2, y2))
-            self.__win.draw_line(line)
+            self.__draw_bottom_border(x1, y1, x2, y2)
         if self.has_left_wall:
-            line = Line(Point(x1, y1), Point(x1, y2))
-            self.__win.draw_line(line)
+            self.__draw_left_border(x1, y1, x2, y2)
+
+    def __draw_top_wall(self, x1, y1, x2, y2, fill_color="black"):
+        line = Line(Point(x1, y1), Point(x2, y1))
+        self.__win.draw_line(line, fill_color)
+
+    def __draw_right_wall(self, x1, y1, x2, y2, fill_color="black"):
+        line = Line(Point(x2, y1), Point(x2, y2))
+        self.__win.draw_line(line, fill_color)
+
+    def __draw_bottom_border(self, x1, y1, x2, y2, fill_color="black"):
+        line = Line(Point(x1, y2), Point(x2, y2))
+        self.__win.draw_line(line, fill_color)
+
+    def __draw_left_border(self, x1, y1, x2, y2, fill_color="black"):
+        line = Line(Point(x1, y1), Point(x1, y2))
+        self.__win.draw_line(line, fill_color)
 
     def draw_move(self, to_cell, undo=False):
         line = Line(
