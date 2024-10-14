@@ -30,6 +30,7 @@ class Maze():
         self._create_cells()
         self._break_entrance_and_exit()
         self._break_walls_r(0, 0)
+        self._reset_cells_visited()
 
     def _create_cells(self):
         for x in range(self._num_cols):
@@ -98,7 +99,8 @@ class Maze():
                 self._draw_cell(i, j)
                 return
 
-            random_i, random_j = to_visit[random.randrange(0, len(to_visit))]
+            random_visit_index = random.randrange(0, len(to_visit))
+            random_i, random_j = to_visit[random_visit_index]
 
             # top
             if random_j < j:
@@ -121,3 +123,8 @@ class Maze():
                 self._cells[random_i][random_j].has_right_wall = False
 
             self._break_walls_r(random_i, random_j)
+
+    def _reset_cells_visited(self):
+        for i in range(self._num_cols):
+            for j in range(self._num_rows):
+                self._cells[i][j].visited = False
