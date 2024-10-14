@@ -19,7 +19,8 @@ def main():
         num_cols,
         cell_size_x,
         cell_size_y,
-        win
+        win,
+        10
     )
 
     win.wait_for_close()
