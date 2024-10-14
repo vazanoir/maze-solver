@@ -20,7 +20,6 @@ def main():
         cell_size_x,
         cell_size_y,
         win,
-        10
     )
 
     win.wait_for_close()

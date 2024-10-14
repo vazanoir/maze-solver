@@ -84,8 +84,8 @@ class Cell():
             )
         )
 
-        color = "red"
+        color = "green"
         if undo:
-            color = "gray"
+            color = "red"
 
         self.__win.draw_line(line, color)
