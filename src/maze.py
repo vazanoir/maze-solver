@@ -61,7 +61,7 @@ class Maze():
             return
 
         self._win.redraw()
-        sleep(0.05)
+        sleep(0.032)
 
     def _break_entrance_and_exit(self):
         entrance_x = 0
